@@ -1,2 +1,20 @@
 ---
 # tasks file for role-rhacm-registration/
+- name: Authorize user
+  include_tasks: authorization.yaml
+
+- name: Registration on Hub
+  include_tasks: hub-registration.yaml
+  when: action == 'register'
+
+- name: Registration on Cluster
+  include_tasks: cluster-registration.yaml
+  when: action == 'register'
+
+- name: Deregistration on Cluster
+  include_tasks: cluster-deregistration.yaml
+  when: action == 'deregister'
+
+- name: Deregistration on Hub
+  include_tasks: hub-deregistration.yaml
+  when: action == 'deregister'

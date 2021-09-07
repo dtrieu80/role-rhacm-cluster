@@ -1,2 +1,8 @@
 ---
-# defaults file for role-rhacm-registration/
+# defaults file: defines required variables with false values to force the
+# developer to provide overrides.
+rhacmreg_hub_url: 'https://api.mycluster.mydomain.com:6443/'
+rhacmreg_client: 'sandbox.mydomain.com'
+
+# role internal defaults
+rhacmreg_action: register
