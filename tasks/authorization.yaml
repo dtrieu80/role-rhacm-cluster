@@ -1,7 +1,7 @@
 ---
 - name: Retrieve cluster-bootstrap object
   set_fact:
-    bootstrap_sa: "{{ lookup('community.kubernetes.k8s', api_version='v1', kind='ServiceAccount', name='cluster-bootstrap') }}"
+    bootstrap_sa: "{{ lookup('community.kubernetes.k8s', api_version='v1', kind='ServiceAccount', namespace='open-cluster-management', name='cluster-bootstrap') }}"
 
 - name: Debug
   debug:
