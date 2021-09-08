@@ -1,4 +1,14 @@
 ---
-- name: Debug
-  debug:
-    msg: "cluster-registration.yaml"
+- name: Apply CRDs to the managed cluster
+  kubernetes.core.k8s:
+    host: "{{ rhacmreg_mc_api }}"
+    api_key: "{{ rhacmreg_mc_apikey }}"
+    state: present
+    definition: "{{ import_crds | b64decode }}"
+
+- name: Apply ROs to the managed cluster
+  kubernetes.core.k8s:
+    host: "{{ rhacmreg_mc_api }}"
+    api_key: "{{ rhacmreg_mc_apikey }}"
+    state: present
+    definition: "{{ import_ros | b64decode }}"

@@ -1,8 +1,5 @@
 ---
 # tasks file for role-rhacm-registration/
-- name: Authorize user
-  include_tasks: authorization.yaml
-
 - name: Registration on Hub
   include_tasks: hub-registration.yaml
   when: action == 'register'
