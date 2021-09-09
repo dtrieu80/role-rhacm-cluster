@@ -1,13 +1,13 @@
 ---
 # defaults file: defines required variables with false values to force the
 # developer to provide overrides.
-rhacmreg_action: register
+rhacmreg_action: donothing
 rhacmreg_hc_api: 'https://api.faux.hub.dyt:6443'
 rhacmreg_hc_apikey: 'fauxhubclusterapikey'
-rhacmreg_hc_cacert: '12345'
+rhacmreg_hc_cacert: '/path/to/nowhere'
 rhacmreg_hc_validate: false
 rhacmreg_mc_name: fauxcluster
 rhacmreg_mc_api: 'https://api.faux.mananged.dyt:6443/'
 rhacmreg_mc_apikey: 'fauxmanagedclusterapikey'
-rhacmreg_mc_cacert: '12345'
+rhacmreg_mc_cacert: '/path/to/nowhere'
 rhacmreg_mc_validate: false
