@@ -16,12 +16,12 @@
 
 - name: Retrieve CRDs from cluster import object on the hub
   set_fact:
-    import_crds: "{{ lookup('kubernetes.core.k8s', host=rhacmreg_hc_api, api_key=rhacmreg_hc_apikey, validate_certs=rhacmreg_hc_validate, api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
+    import_crds: "{{ lookup('kubernetes.core.k8s', host=rhacmreg_hc_api, api_key=rhacmreg_hc_apikey, ca_cert=rhacmreg_hc_cacert, validate_certs=rhacmreg_hc_validate, api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
   vars:
     query: "data.\"crds.yaml\""
 
 - name: Retrieve ROs from cluster import object on the hub
   set_fact:
-    import_ros: "{{ lookup('kubernetes.core.k8s', host=rhacmreg_hc_api, api_key=rhacmreg_hc_apikey, validate_certs=rhacmreg_hc_validate, api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
+    import_ros: "{{ lookup('kubernetes.core.k8s', host=rhacmreg_hc_api, api_key=rhacmreg_hc_apikey, ca_cert=rhacmreg_hc_cacert, validate_certs=rhacmreg_hc_validate, api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
   vars:
     query: "data.\"import.yaml\""

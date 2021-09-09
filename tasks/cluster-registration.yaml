@@ -3,6 +3,7 @@
   kubernetes.core.k8s:
     host: "{{ rhacmreg_mc_api }}"
     api_key: "{{ rhacmreg_mc_apikey }}"
+    ca_cert: "{{ rhacmreg_mc_cacert }}"
     state: present
     definition: "{{ import_crds | b64decode }}"
 
@@ -10,5 +11,6 @@
   kubernetes.core.k8s:
     host: "{{ rhacmreg_mc_api }}"
     api_key: "{{ rhacmreg_mc_apikey }}"
+    ca_cert: "{{ rhacmreg_mc_cacert }}"
     state: present
     definition: "{{ import_ros | b64decode }}"
