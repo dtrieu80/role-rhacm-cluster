@@ -1,17 +1,61 @@
 ---
-# tasks file for role-rhacm-registration/
-- name: Registration on Hub
-  include_tasks: hub-registration.yaml
-  when: rhacmreg_action == 'register'
+# Hub Registration with different Auths
+- name: Registration on Hub with Token
+  include_tasks: hub-registration-token.yaml
+  when: 
+    - rhacmreg_action == 'register'
+    - import_crds is not defined
+    - import_ros is not defined
+    - rhacmreg_hc_apikey is defined
 
-- name: Registration on Cluster
-  include_tasks: cluster-registration.yaml
-  when: rhacmreg_action == 'register'
+- name: Registration on Hub with Kubeconfig
+  include_tasks: hub-registration-kubeconfig.yaml
+  when: 
+    - rhacmreg_action == 'register'
+    - import_crds is not defined
+    - import_ros is not defined
+    - rhacmreg_hc_kubeconfig is defined
 
-- name: Deregistration on Cluster
-  include_tasks: cluster-deregistration.yaml
-  when: rhacmreg_action == 'deregister'
+- name: Registration on Hub with Username and Password
+  include_tasks: hub-registration-userpass.yaml
+  when: 
+    - rhacmreg_action == 'register'
+    - import_crds is not defined
+    - import_ros is not defined
+    - rhacmreg_hc_username is defined
+    - rhacmreg_hc_password is defined
 
-- name: Deregistration on Hub
-  include_tasks: hub-deregistration.yaml
-  when: rhacmreg_action == 'deregister'
+# Managed Cluster Registration with different Auths
+- name: Registration on Cluster with Token
+  include_tasks: cluster-registration-token.yaml
+  when:
+    - rhacmreg_action == 'register'
+    - crds_import_results is not defined
+    - ros_import_results is not defined
+    - rhacmreg_hc_apikey is defined
+
+- name: Registration on Cluster with Kubeconfig
+  include_tasks: cluster-registration-kubeconfig.yaml
+  when:
+    - rhacmreg_action == 'register'
+    - crds_import_results is not defined
+    - ros_import_results is not defined
+    - rhacmreg_hc_apikey is defined
+
+- name: Registration on Cluster with Username and Password
+  include_tasks: cluster-registration-userpass.yaml
+  when:
+    - rhacmreg_action == 'register'
+    - crds_import_results is not defined
+    - ros_import_results is not defined
+    - rhacmreg_hc_apikey is defined
+
+# TODO
+# - name: Deregistration on Cluster
+#   include_tasks: cluster-deregistration.yaml
+#   when: rhacmreg_action == 'deregister'
+
+# - name: Deregistration on Hub
+#   include_tasks: hub-deregistration.yaml
+#   when: rhacmreg_action == 'deregister'
+
