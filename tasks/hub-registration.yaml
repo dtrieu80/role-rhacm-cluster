@@ -25,6 +25,11 @@
     import_crds: "{{ lookup('kubernetes.core.k8s', api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
   vars:
     query: "data.\"crds.yaml\""
+  environment:
+    K8S_AUTH_HOST: "{{ rhacmreg_hc_api }}"
+    K8S_AUTH_API_KEY: "{{ rhacmreg_hc_apikey }}"
+    K8S_AUTH_VERIFY_SSL: "{{ rhacmreg_hc_validate }}"
+    K8S_AUTH_SSL_CA_CERT: "{{ rhacmreg_hc_cacert }}"
 
 # - name: Retrieve ROs from cluster import object on the hub
 #   set_fact:
@@ -37,3 +42,8 @@
     import_ros: "{{ lookup('kubernetes.core.k8s', api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
   vars:
     query: "data.\"import.yaml\""
+  environment:
+    K8S_AUTH_HOST: "{{ rhacmreg_hc_api }}"
+    K8S_AUTH_API_KEY: "{{ rhacmreg_hc_apikey }}"
+    K8S_AUTH_VERIFY_SSL: "{{ rhacmreg_hc_validate }}"
+    K8S_AUTH_SSL_CA_CERT: "{{ rhacmreg_hc_cacert }}"
