@@ -1,4 +1,12 @@
 ---
+- name: Debug import_crds
+  debug:
+    var: import_crds
+
+- name: Debug import_ros
+  debug:
+    var: import_ros
+    
 - name: Apply CRDs to the managed cluster
   kubernetes.core.k8s:
     host: "{{ rhacmreg_mc_api }}"
