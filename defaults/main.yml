@@ -4,6 +4,8 @@
 rhacmreg_action: register
 rhacmreg_hc_api: 'https://api.faux.hub.dyt:6443'
 rhacmreg_hc_apikey: 'fauxhubclusterapikey'
+rhacmreg_hc_validate: false
 rhacmreg_mc_name: fauxcluster
 rhacmreg_mc_api: 'https://api.faux.mananged.dyt:6443/'
 rhacmreg_mc_apikey: 'fauxmanagedclusterapikey'
+rhacmreg_mc_validate: false
