@@ -10,7 +10,8 @@
 - name: Apply CRDs to the managed cluster
   kubernetes.core.k8s:
     host: "{{ rhacmreg_mc_api }}"
-    api_key: "{{ rhacmreg_mc_apikey }}"
+    username: "{{ rhacmreg_mc_username }}"
+    password: "{{ rhacmreg_mc_password }}"
     validate_certs: "{{ rhacmreg_mc_validate }}"
     ca_cert: "{{ rhacmreg_mc_cacert }}"
     state: present
@@ -20,7 +21,8 @@
 - name: Apply ROs to the managed cluster
   kubernetes.core.k8s:
     host: "{{ rhacmreg_mc_api }}"
-    api_key: "{{ rhacmreg_mc_apikey }}"
+    username: "{{ rhacmreg_mc_username }}"
+    password: "{{ rhacmreg_mc_password }}"
     validate_certs: "{{ rhacmreg_mc_validate }}"
     ca_cert: "{{ rhacmreg_mc_cacert }}"
     state: present

@@ -1,14 +1,14 @@
 ---
-- name: Create cluster object
-  uri:
-    url: "{{ rhacmreg_hc_api }}/apis/cluster.open-cluster-management.io/v1/managedclusters"
-    validate_certs: "{{ rhacmreg_hc_validate }}"
-    method: POST
-    headers:
-      Authorization: "Bearer {{ rhacmreg_hc_apikey }}"
-    body_format: json
-    body: "{{ lookup('template','create_cluster_json.j2') }}"
-    status_code: [201, 409]
+# - name: Create cluster object
+#   uri:
+#     url: "{{ rhacmreg_hc_api }}/apis/cluster.open-cluster-management.io/v1/managedclusters"
+#     validate_certs: "{{ rhacmreg_hc_validate }}"
+#     method: POST
+#     headers:
+#       Authorization: "Bearer {{ rhacmreg_hc_apikey }}"
+#     body_format: json
+#     body: "{{ lookup('template','create_cluster_json.j2') }}"
+#     status_code: [201, 409]
 
 - name: Define cluster import object
   set_fact:
@@ -16,13 +16,13 @@
 
 - name: Retrieve CRDs from cluster import object on the hub
   set_fact:
-    import_crds: "{{ lookup('kubernetes.core.k8s', host=rhacmreg_hc_api, api_key=rhacmreg_hc_apikey, validate_certs=rhacmreg_hc_validate, ca_cert=rhacmreg_hc_cacert, api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
+    import_crds: "{{ lookup('kubernetes.core.k8s', host=rhacmreg_hc_api, username=rhacmreg_hc_username, password=rhacmreg_hc_password, validate_certs=rhacmreg_hc_validate, ca_cert=rhacmreg_hc_cacert, api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
   vars:
     query: "data.\"crds.yaml\""
 
 
 - name: Retrieve ROs from cluster import object on the hub
   set_fact:
-    import_ros: "{{ lookup('kubernetes.core.k8s', host=rhacmreg_hc_api, api_key=rhacmreg_hc_apikey, validate_certs=rhacmreg_hc_validate, ca_cert=rhacmreg_hc_cacert, api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
+    import_ros: "{{ lookup('kubernetes.core.k8s', host=rhacmreg_hc_api, username=rhacmreg_hc_username, password=rhacmreg_hc_password, validate_certs=rhacmreg_hc_validate, ca_cert=rhacmreg_hc_cacert, api_version='v1', kind='Secret', namespace=rhacmreg_mc_name, resource_name=cluster_import_obj) | json_query(query) }}"
   vars:
     query: "data.\"import.yaml\""
