@@ -27,7 +27,7 @@
           vendor: auto-detect
           cloud: auto-detect
       spec:
-        hubAcceptsClient: true
+        hubAcceptsClient: 'true'
     wait: yes
     wait_condition:
       type: HubAcceptedManagedCluster
