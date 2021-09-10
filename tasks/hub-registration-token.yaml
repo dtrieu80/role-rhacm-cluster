@@ -13,6 +13,10 @@
 - name: Create cluster object
   kubernetes.core.k8s:
     state: present
+    host: "{{ rhacmreg_hc_api }}"
+    api_key: "{{ rhacmreg_hc_apikey }}"
+    validate_certs: "{{ rhacmreg_hc_validate }}"
+    ca_cert: "{{ rhacmreg_hc_cacert }}"
     definition:
       apiVersion: cluster.open-cluster-management.io/v1
       kind: ManagedCluster
