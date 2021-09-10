@@ -24,8 +24,15 @@
         name: "{{ rhacmreg_mc_name }}"
         labels:
           name: "{{ rhacmreg_mc_name }}"
+          vendor: auto-detect
+          cloud: auto-detect
       spec:
         hubAcceptsClient: true
+    wait: yes
+    wait_condition:
+      type: HubAcceptedManagedCluster
+      status: true
+      reason: HubClusterAdminAccepted 
 
 - name: Define cluster import object
   set_fact:
