@@ -32,7 +32,7 @@
     - rhacmreg_action == 'register'
     - crds_import_results is not defined
     - ros_import_results is not defined
-    - rhacmreg_hc_apikey is defined
+    - rhacmreg_mc_apikey is defined
 
 - name: Registration on Cluster with Kubeconfig
   include_tasks: cluster-registration-kubeconfig.yaml
@@ -40,7 +40,7 @@
     - rhacmreg_action == 'register'
     - crds_import_results is not defined
     - ros_import_results is not defined
-    - rhacmreg_hc_apikey is defined
+    - rhacmreg_mc_kubeconfig is defined
 
 - name: Registration on Cluster with Username and Password
   include_tasks: cluster-registration-userpass.yaml
@@ -48,7 +48,8 @@
     - rhacmreg_action == 'register'
     - crds_import_results is not defined
     - ros_import_results is not defined
-    - rhacmreg_hc_apikey is defined
+    - rhacmreg_mc_username is defined
+    - rhacmreg_mc_password is defined
 
 # TODO
 # - name: Deregistration on Cluster
